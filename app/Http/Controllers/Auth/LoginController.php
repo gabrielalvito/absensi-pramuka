@@ -26,31 +26,23 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = '/';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function redirectTo()
-    {
-        $role = auth()->user()->roles;
-        switch ($role) {
-            case 'ADMIN':
-                return '/admin';
-                break;
-            case 'USER':
-                return '/user';
-                break;
-            default:
-                return '/';
-                break;
-        }
-    }
-
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function username()
+    {
+        $loginValue = request('nta');
+        $this->nta = filter_var($loginValue, FILTER_VALIDATE_EMAIL) ? 'email' : 'nta';
+        request()->merge([$this->nta => $loginValue]);
+        return property_exists($this, 'nta') ? $this->nta : 'email';
     }
 }

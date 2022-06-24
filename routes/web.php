@@ -21,8 +21,14 @@ Auth::routes(['verify' => true]);
 Route::prefix('admin')
     ->middleware(['auth', 'admin'])
     ->group(function () {
-        Route::get('/', "DashboardController@index");
+        Route::get('/', "DashboarduserController@index");
     });
+
+    
+Auth::routes();
+
+Route::get('/home', "DashboarduserController@index")->name('home');
+
 
 //User = User
 Route::get('/user', "DashboarduserController@index")->middleware('user');
@@ -123,3 +129,5 @@ Route::post('/pembina/import_excel', 'pembinaController@import_excel');
 // Route::get('/siswa/createskk', [App\Http\Controllers\Admin\SiswaController::class, 'createskk']);
 // Route::get('/siswa/creategaruda', [App\Http\Controllers\Admin\SiswaController::class, 'creategaruda']);
 // Route::get('/siswa/createkegiatan', [App\Http\Controllers\Admin\SiswaController::class, 'createkegiatan']);
+
+
