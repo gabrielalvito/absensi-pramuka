@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class SiswaDatadiriController extends Controller
 {
@@ -82,7 +83,7 @@ class SiswaDatadiriController extends Controller
         SiswaDatadiri::create([
             'nama' => $request->nama,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make($request['password']),
             'kelas' => $request->kelas,
             'nta' => $request->nta,
             'tempat_lahir' => $request->tempat_lahir,

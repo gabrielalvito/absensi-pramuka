@@ -72,6 +72,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{url('pembina')}}">Data Pembina</a>
             <a class="collapse-item" href="{{url('siswa')}}">Data Siswa</a>
+            <a class="collapse-item" href="{{url('siswa')}}">Data Siswa</a>
+            <a class="collapse-item" href="{{url('regu')}}">Data Regu</a>
         </div>
     </div>
 </li>

@@ -104,7 +104,7 @@
                         @foreach ($user01 as $item)
                         <tr>
                             <td align="center">{{ $loop->iteration }}</td>
-                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->nama }}</td>
                            
                             <td>{{ $item->email }}</td>
                             {{-- <td>{{ $item->password }}</td> --}}
