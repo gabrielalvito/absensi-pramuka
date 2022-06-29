@@ -54,6 +54,10 @@
                 <td>{{$pembina->nama}}</td>
               </tr>
               <tr>
+                <td>Username</td>
+                <td>{{$pembina->username}}</td>
+              </tr>
+              <tr>
                 <td>Tempat Lahir</td>
                 <td>{{$pembina->tempat_lahir}}</td>
               </tr>

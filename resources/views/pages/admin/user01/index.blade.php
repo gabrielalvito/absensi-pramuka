@@ -94,6 +94,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
+                            <th>Username</th>
                             <th>Email</th>
                             {{-- <th>Password</th> --}}
                             <th>Roles</th>
@@ -105,7 +106,7 @@
                         <tr>
                             <td align="center">{{ $loop->iteration }}</td>
                             <td>{{ $item->nama }}</td>
-                           
+                            <td>{{ $item->username }}</td>
                             <td>{{ $item->email }}</td>
                             {{-- <td>{{ $item->password }}</td> --}}
                             <td>{{ $item->roles }}</td>

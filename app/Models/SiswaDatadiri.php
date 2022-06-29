@@ -14,6 +14,7 @@ class SiswaDatadiri extends Model
 
     protected $fillable = [
         'nama',
+        'username',
         'email',
         'password',
         'kelas',

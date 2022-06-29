@@ -78,6 +78,7 @@ class PembinaController extends Controller
         ]);
         User::create([
             'nama' => $request->nama,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request['password']),
             'nta' => $request->nta,
@@ -154,6 +155,7 @@ class PembinaController extends Controller
         $this->validate($request, [
             'nta' => 'required',
             'nama' => 'required',
+            'username' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'jenis_kelamin' => 'required',
@@ -167,6 +169,7 @@ class PembinaController extends Controller
         Pembina::where('id', $id)->update([
             'nta' => $request->nta,
             'nama' => $request->nama,
+            'username' => $request->username,
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,

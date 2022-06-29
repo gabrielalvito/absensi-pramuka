@@ -38,6 +38,11 @@
       </div>
 
       <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" value="{{$siswa->username}}"> 
+      </div>
+
+      <div class="form-group">
         <label for="email">Email</label>
         <input type="text" class="form-control" name="email" value="{{$siswa->email}}"> 
       </div>

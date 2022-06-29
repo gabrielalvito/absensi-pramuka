@@ -33,6 +33,11 @@
       </div>
 
       <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" placeholder="Username" value="{{old('username')}}"> 
+      </div>
+
+      <div class="form-group">
         <label for="email">Email</label>
         <input type="text" class="form-control" name="email" placeholder="Email" value="{{old('email')}}"> 
       </div>

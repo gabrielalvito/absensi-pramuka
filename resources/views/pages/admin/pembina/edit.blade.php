@@ -36,6 +36,11 @@
         <label for="nama">Nama</label>
         <input type="text" class="form-control" name="nama" value="{{$pembina->nama}}"> 
       </div>
+      
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" value="{{$pembina->username}}"> 
+      </div>
 
       <div class="form-group">
         <label for="tempat_lahir">Tempat Lahir</label>

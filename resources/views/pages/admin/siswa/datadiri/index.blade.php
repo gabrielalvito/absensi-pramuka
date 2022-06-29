@@ -94,6 +94,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
+                            <th>Username</th>
                             <th>Email</th>
                             <th>Kelas</th>
                             <th>NTA</th>
@@ -118,6 +119,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama }}</td>
+                            <td>{{ $item->username }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->kelas }}</td>
                             <td>{{ $item->nta }}</td>

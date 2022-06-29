@@ -14,6 +14,7 @@ class Pembina extends Model
     protected $fillable = [
         'nta',
         'nama',
+        'pembina',
         'tempat_lahir',
         'tanggal_lahir',
         'jenis_kelamin',

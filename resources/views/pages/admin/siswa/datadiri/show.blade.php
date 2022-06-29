@@ -50,6 +50,10 @@
                 <td>{{$siswa->nama}}</td>
               </tr>
               <tr>
+                <td>Username</td>
+                <td>{{$siswa->username}}</td>
+              </tr>
+              <tr>
                 <td>Email</td>
                 <td>{{$siswa->email}}</td>
               </tr>

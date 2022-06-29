@@ -67,6 +67,7 @@ class SiswaDatadiriController extends Controller
         // dd($request);
         $this->validate($request, [
             'nama' => 'required',
+            'username' => 'required',
             'email' => 'required',
             'password' => 'required',
             'kelas' => 'required',
@@ -82,6 +83,7 @@ class SiswaDatadiriController extends Controller
         ]);
         SiswaDatadiri::create([
             'nama' => $request->nama,
+            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request['password']),
             'kelas' => $request->kelas,
@@ -167,6 +169,7 @@ class SiswaDatadiriController extends Controller
         $this->validate($request, [
             'nta' => 'required',
             'nama' => 'required',
+            'username' => 'required',
             'email' => 'required',
             'kelas' => 'required',
             'tempat_lahir' => 'required',
@@ -181,6 +184,7 @@ class SiswaDatadiriController extends Controller
         SiswaDatadiri::where('id', $id)->update([
             'nta' => $request->nta,
             'nama' => $request->nama,
+            'username' => $request->username,
             'password' => $request->password,
             'kelas' => $request->kelas,
             'tempat_lahir' => $request->tempat_lahir,

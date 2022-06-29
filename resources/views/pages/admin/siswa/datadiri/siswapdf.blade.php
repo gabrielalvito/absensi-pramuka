@@ -53,6 +53,12 @@
       </tr>
       <tr>
         <td>{{$i++}}</td>
+        <td>Username</td>
+        <td>:</td>
+        <td>{{$siswa->username}}</td>
+      </tr>
+      <tr>
+        <td>{{$i++}}</td>
         <td>Kelas</td>
         <td>:</td>
         <td>{{$siswa->kelas}}</td>
