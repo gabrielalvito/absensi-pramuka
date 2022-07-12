@@ -24,7 +24,7 @@
 <div class="card shadow">
   <div class="card-body">
 
-    <form method="post" action="/siswa/{{ $siswa->id }}/update">
+    <form method="post" action="/siswa/{{ $siswa->id }}/update" enctype="multipart/form-data">
       @csrf
       @method('patch')
       <div class="form-group">
@@ -166,9 +166,8 @@
 
       <div class="form-group">
         <label for="foto">Foto</label>
-      <div class="custom-file">
-      
-        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+      <div class="custom-file">      
+        <input type="file" name="foto" class="custom-file-input" id="validatedCustomFile" required>
         <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
         <div class="invalid-feedback">Example invalid custom file feedback</div>
       </div>

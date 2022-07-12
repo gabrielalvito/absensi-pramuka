@@ -173,8 +173,13 @@ class PembinaController extends Controller
             'alamat' => 'required',
             'no_tlp' => 'required',
             'golongan' => 'required',
-            'jabatan' => 'required'
+            'jabatan' => 'required',
+            'foto' => 'required|image|mimes:jpeg,jpg,png',
         ]);
+
+        $foto_pembina = $request->foto;
+        $nama_file = time().'.'.$foto_pembina->getClientOriginalExtension();
+        $foto_pembina->move('foto_pembina/' , $nama_file);
 
         Pembina::where('id', $id)->update([
             'nta' => $request->nta,
@@ -187,7 +192,8 @@ class PembinaController extends Controller
             'alamat' => $request->alamat,
             'no_tlp' => $request->no_tlp,
             'golongan' => $request->golongan,
-            'jabatan' => $request->jabatan
+            'jabatan' => $request->jabatan,
+            'foto' => $nama_file,
         ]);
         return redirect('pembina')->with('success', 'Data Pembina Berhasil Diedit!');
     }

@@ -184,7 +184,12 @@ class SiswaDatadiriController extends Controller
             'alamat' => 'required',
             'no_tlp' => 'required',
             'jabatan' => 'required',
+            'foto' => 'required|image|mimes:jpeg,jpg,png',
         ]);
+
+        $foto_siswa = $request->foto;
+        $nama_file = time().'.'.$foto_siswa->getClientOriginalExtension();
+        $foto_siswa->move('foto_siswa/' , $nama_file);
 
         SiswaDatadiri::where('id', $id)->update([
             'nta' => $request->nta,
@@ -199,6 +204,7 @@ class SiswaDatadiriController extends Controller
             'alamat' => $request->alamat,
             'no_tlp' => $request->no_tlp,
             'jabatan' => $request->jabatan,
+            'foto' => $nama_file,
         ]);
         return redirect('siswa')->with('success', 'Data Siswa Berhasil Diedit!');
     }
