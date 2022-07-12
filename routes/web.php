@@ -91,6 +91,7 @@ Route::get('/user01/create', "User01Controller@create");
 
 //User = Data Presensi
 Route::get('/presensi', "PresensiController@indexuser");
+Route::post('/simpanpresensi', "PresensiController@store")->name('SPresensi');
 
 //Admin = Data Rekap
 Route::get('/rekap', "RekapController@index");

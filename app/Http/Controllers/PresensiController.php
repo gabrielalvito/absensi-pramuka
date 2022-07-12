@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Presensi;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PresensiController extends Controller
 {
@@ -25,9 +26,10 @@ class PresensiController extends Controller
     public function indexuser()
     {
         $items = Presensi::all();
-
+        // $user = Auth::user()->nama;
         return view('pages.user.presensi.index', [
-            'presensi' => $items
+            'presensi' => $items,
+            // 'user' => $user,
         ]);
     }
 
@@ -49,7 +51,26 @@ class PresensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'foto' => 'required|image|mimes:jpeg,jpg,png',
+        ]);
+        $id_user = Auth::user()->id;
+        $foto_presensi = $request->foto;
+        $nama_file = time().'.'.$foto_presensi->getClientOriginalExtension();
+        $foto_presensi->move('foto_presensi/' , $nama_file);
+        $tanggal = date('Y-m-d');
+        $jam = date('H:i:s');
+
+
+        $presensi = new Presensi;
+        $presensi->id_user = $id_user;
+        $presensi->tanggal_absen = $tanggal;
+        $presensi->j_masuk = $jam;
+        $presensi->ket = $request->keterangan;
+        $presensi->foto = $nama_file;
+        $presensi->save();
+
+        return redirect('presensi');
     }
 
     /**

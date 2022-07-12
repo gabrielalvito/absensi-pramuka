@@ -14,7 +14,7 @@
 
 
         <div class="card-body">
-            <h5><strong>Hello {{Auth::user()->name}} !!</strong></h5>
+            <h5><strong>Hello {{ Auth::user()->nama }} !!</strong></h5>
             <br>
 
             <!-- Modal Create -->
@@ -28,15 +28,15 @@
           </button>
         </div>
 
-        <form action="" method="post" >
+        <form action="{{ route('SPresensi') }}" method="post" enctype="multipart/form-data">
         {{-- {{ crsf_field() }} --}}
         @csrf
             <div class="modal-body">
                 <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" name="nama_siswa" class="form-control" id="nama_siswa" aria-describedby="nama" value="{{Auth::user()->name}}" readonly>
+                    <input type="text" name="nama_siswa" class="form-control" id="nama_siswa" aria-describedby="nama" value="{{ Auth::user()->nama }}" readonly>
                   </div>
-               
+               {{--
                 <div class="form-group">
                     <label>Status Masuk</label>
                     <div class="form-check">
@@ -52,13 +52,16 @@
                         </label>
                       </div>
                 </div>
+                @if()
+                @endif
+                --}}
                 <div class="form-group">
                     <label>Keterangan</label>
-                    <select class="custom-select my-1 mr-sm-2" id="s_masuk" name="s_masuk">
+                    <select class="custom-select my-1 mr-sm-2" id="keterangan" name="keterangan">
                         <option selected>Pilih...</option>
                         <option value="Hadir">Hadir</option>
-                        <option value="Hadir">Sakit</option>
-                        <option value="Tidak Hadir">Ijin</option>
+                        <option value="Sakit">Sakit</option>
+                        <option value="Ijin">Ijin</option>
                         
                     </select>
                 </div>
@@ -67,14 +70,15 @@
                     <label for="foto">Foto</label>
                   <div class="custom-file">
                   
-                    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                    <input type="file" name="foto" class="custom-file-input" id="validatedCustomFile" required>
                     <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                   </div>
                   </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary btn-lg btn-block">Absen</button>
+            <!-- <button type="button" class="btn btn-primary btn-lg btn-block">Absen</button> -->
+            <input type="submit" name="submit" value="Absen" class="btn btn-primary btn-lg btn-block">
         </div>
         </form>
       </div>
