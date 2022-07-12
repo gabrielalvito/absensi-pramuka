@@ -131,7 +131,8 @@
                             <td>{{ $item->no_tlp }}</td>
                             <td>{{ $item->id_regu }}</td>
                             <td>{{ $item->jabatan }}</td>
-                            <td>{{ $item->foto }}</td>
+                            <td><a href="{{ asset('frontend/images/IMG_6959.jpeg') }}" target="_blank">
+                                <img height="70px" width="50px" src="{{ asset('foto_siswa/' .$item -> foto) }}" alt=""></a></td>
                             @if($user == 'ADMIN')
                             <td>
                                 <a class="btn btn-info" href="{{url('siswa/'.$item->id.'/show')}}"><i class="fa fa-eye"></i></a>

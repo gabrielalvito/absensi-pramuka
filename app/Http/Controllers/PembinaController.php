@@ -82,9 +82,6 @@ class PembinaController extends Controller
         $foto_pembina = $request->foto;
         $nama_file = time().'.'.$foto_pembina->getClientOriginalExtension();
         $foto_pembina->move('foto_pembina/' , $nama_file);
-        // $pembina = new Pembina;
-        // $pembina->foto = $nama_file;
-        // $pembina->save();
        
 
         User::create([

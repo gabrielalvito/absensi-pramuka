@@ -81,6 +81,11 @@ class SiswaDatadiriController extends Controller
             'id_regu' => 'required',
             'jabatan' => 'required'
         ]);
+
+        $foto_siswa = $request->foto;
+        $nama_file = time().'.'.$foto_siswa->getClientOriginalExtension();
+        $foto_siswa->move('foto_siswa/' , $nama_file);
+
         SiswaDatadiri::create([
             'nama' => $request->nama,
             'username' => $request->username,
@@ -97,7 +102,7 @@ class SiswaDatadiriController extends Controller
             'no_tlp' => $request->no_tlp,
             'id_regu' => $request->id_regu,
             'jabatan' => $request->jabatan,
-            'foto' => $request->foto
+            'foto' => $nama_file,
         ]);
         return redirect('siswa')->with('success', 'Data Siswa Berhasil Ditambahkan!');
 
