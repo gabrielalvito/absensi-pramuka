@@ -48,6 +48,11 @@
       </div>
 
       <div class="form-group">
+        <label for="email">Password</label>
+        <input type="password" class="form-control" name="password" value="{{$siswa->password}}"> 
+      </div>
+
+      <div class="form-group">
         <label for="kelas">Kelas</label>
         <select class="custom-select my-1 mr-sm-2" id="kelas" name="kelas" value="{{$siswa->kelas}}">
                           <option value="VII - A">VII - A</option>

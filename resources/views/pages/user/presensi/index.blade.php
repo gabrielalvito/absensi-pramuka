@@ -136,22 +136,22 @@
                                 <tr>
                                     <th width="3%">Hadir</th>
                                     <td width="1%">:</td>
-                                    <td width="10%">8</td>
+                                    <td width="10%">{{ $hadir }}</td>
                                 </tr>
                                 <tr>
                                     <th width="3%">Sakit</th>
                                     <td width="1%">:</td>
-                                    <td width="10%">2</td>
+                                    <td width="10%">{{ $sakit }}</td>
                                 </tr>
                                 <tr>
                                     <th width="3%">Ijin</th>
                                     <td width="1%">:</td>
-                                    <td width="10%">2</td>
+                                    <td width="10%">{{ $ijin }}</td>
                                 </tr>
                                 <tr>
                                     <th width="3%">Alpha</th>
                                     <td width="1%">:</td>
-                                    <td width="10%">2</td>
+                                    <td width="10%">{{ $alpha }}</td>
                                 </tr>
                             </table>
                           </div>

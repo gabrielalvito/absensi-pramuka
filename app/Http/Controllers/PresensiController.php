@@ -25,12 +25,13 @@ class PresensiController extends Controller
 
     public function indexuser()
     {
-        $items = Presensi::all();
-        // $user = Auth::user()->nama;
-        return view('pages.user.presensi.index', [
-            'presensi' => $items,
-            // 'user' => $user,
-        ]);
+        $id_user = Auth::user()->id;
+        $hadir = Presensi::all()->where('id_user' , $id_user)->where('ket' , 'hadir')->count();
+        $sakit = Presensi::all()->where('id_user' , $id_user)->where('ket' , 'sakit')->count();
+        $ijin = Presensi::all()->where('id_user' , $id_user)->where('ket' , 'ijin')->count();
+        $alpha = Presensi::all()->where('id_user' , $id_user)->where('ket' , 'alpha')->count();
+        return view('pages.user.presensi.index', compact('hadir' , 'sakit' , 'ijin' , 'alpha'));
+        // dd($items);
     }
 
     /**

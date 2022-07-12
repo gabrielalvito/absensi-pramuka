@@ -9,7 +9,7 @@ class Pembina extends Model
 {
     use HasFactory;
 
-    protected $table = "pembina";
+    protected $table = "users";
 
     protected $fillable = [
         'nta',
