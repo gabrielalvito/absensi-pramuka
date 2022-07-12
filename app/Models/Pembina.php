@@ -23,6 +23,7 @@ class Pembina extends Model
         'no_tlp',
         'golongan',
         'jabatan',
+        'foto',
     ];
 
     protected $hidden = [];

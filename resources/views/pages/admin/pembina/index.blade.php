@@ -123,7 +123,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->username }}</td>
-                            <td><a href="{{ asset('frontend/images/IMG_6959.jpeg') }}" target="_blank"><img height="70px" width="50px" src="{{ asset('frontend/images/IMG_6959.jpeg') }}" alt=""></a></td>
+                            <td><a href="{{ asset('frontend/images/IMG_6959.jpeg') }}" target="_blank">
+                                <img height="70px" width="50px" src="{{ asset('foto_pembina/' .$item -> foto) }}" alt=""></a></td>
                             <td>{{ $item->nta }}</td>
                             <td>{{ $item->golongan }}</td>
                             <td>{{ $item->jabatan }}</td>

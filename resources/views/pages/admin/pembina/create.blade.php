@@ -25,7 +25,7 @@
 
 <div class="card shadow">
   <div class="card-body">
-    <form action="/pembina/store" method="post">
+    <form action="/pembina/store" method="post" enctype="multipart/form-data">
     {{-- {{ crsf_field() }} --}}
       @csrf
       <div class="form-group">
@@ -123,7 +123,7 @@
       <div class="form-group">
         <label for="foto">Foto</label>
       <div class="custom-file">      
-        <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+        <input type="file" name="foto" class="custom-file-input" id="validatedCustomFile" required>
         <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
         <div class="invalid-feedback">Example invalid custom file feedback</div>
       </div>
