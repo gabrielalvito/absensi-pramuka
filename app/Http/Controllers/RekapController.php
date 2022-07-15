@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rekap;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,7 @@ class RekapController extends Controller
     public function index()
     {
         $items = Rekap::all();
+        $items = User::all();
 
         return view('pages.admin.rekap.index', [
             'rekap' => $items
@@ -60,7 +62,11 @@ class RekapController extends Controller
      */
     public function show($id)
     {
-        //
+        $items = Rekap::findOrFail($id);
+
+        return view('pages.admin.rekap.show', [
+            'rekap' => $items
+        ]);
     }
 
     /**

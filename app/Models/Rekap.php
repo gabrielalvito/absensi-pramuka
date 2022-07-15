@@ -13,6 +13,7 @@ class Rekap extends Model
 
     protected $fillable = [
         'id_siswa',
+        'id_user',
         'id_pembina',
         'tanggal_absen',
         'j_masuk',

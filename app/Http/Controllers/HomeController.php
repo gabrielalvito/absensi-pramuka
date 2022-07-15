@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Presensi;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $total_user = User::count();
+        $pembina = User::where('roles','PEMBINA')->count();
+        $siswa = User::where('roles','USER')->count();
+        $presensi = Presensi::count();
+
+        return view('home', compact('total_user','pembina','siswa', 'presensi'));
     }
 }

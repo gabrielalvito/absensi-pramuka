@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 
-
-
 @section('content')
 
 
@@ -124,9 +122,11 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>NTA</th>
-                            <th>Golongan</th>
-                            <th>Jabatan</th>
-                            <th>Status Kehadiran</th>
+                            <th>Kelas</th>
+                            <th>Tanggal Absen</th>
+                            <th>Jam Absen</th>
+                            <th>Status Masuk</th>
+                            <th>Foto</th>
                             <th>Action</th> 
                         </tr>
                     <tbody>
@@ -134,11 +134,10 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->nama }}</td>
-                            <td><a href="{{ asset('frontend/images/IMG_6959.jpeg') }}" target="_blank"><img height="70px" width="50px" src="{{ asset('frontend/images/IMG_6959.jpeg') }}" alt=""></a></td>
-                           
                             <td>{{ $item->nta }}</td>
+                            <td><a target="_blank"><img height="70px" width="50px" src="{{ asset('foto_pembina/' .$item -> foto) }}" alt=""></a></td>
                             <td>{{ $item->golongan }}</td>
-                            <td>{{ $item->jabatan }}</td>
+                            <td>{{ $item->ket }}</td>
                             <td>
                                 <a class="btn btn-info" href="{{url('rekap/'.$item->id.'/show')}}"><i class="fa fa-eye"></i></a>
                                 <a class="btn btn-success" href="{{url('rekap/'.$item->id.'/edit')}}"><i class="fas fa-pencil-alt"></i></a>

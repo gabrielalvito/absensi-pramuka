@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Presensi;
 
 class DashboardController extends Controller
 {
@@ -13,7 +15,29 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        return view('pages.admin.dashboard');
+        $total_user = User::count();
+        $pembina = User::where('roles','PEMBINA')->count();
+        $siswa = User::where('roles','USER')->count();
+        $presensi = Presensi::count();
+
+        $absen = Presensi::all();
+
+        $dataPoints = [];
+
+        foreach ($absen as $data) {
+            
+            $dataPoints[] = array(
+                "name" => $data['name'],
+                "data" => [
+                    intval($data['term1_marks']),
+                    intval($data['term2_marks']),
+                    intval($data['term3_marks']),
+                    intval($data['term4_marks']),
+                ],
+            );
+        }
+        // return view('home', compact('total_user','pembina','siswa', 'presensi'));
+        return view('pages.admin.dashboard', compact('total_user','pembina','siswa', 'presensi'));
     }
 
     /**
