@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Mar 2022 pada 08.17
--- Versi server: 10.4.22-MariaDB
--- Versi PHP: 7.4.26
+-- Generation Time: Jul 17, 2022 at 08:30 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -40,22 +40,29 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `galerysiswa`
+-- Table structure for table `golongan`
 --
 
-CREATE TABLE `galerysiswa` (
+CREATE TABLE `golongan` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `siswa_id` int(11) NOT NULL,
-  `image` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
+  `golongan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_kapling` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_regu` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `golongan`
+--
+
+INSERT INTO `golongan` (`id`, `golongan`, `no_kapling`, `nama_regu`, `created_at`, `updated_at`) VALUES
+(1, 'Penggalang Ramu', '1', 'Flamboyan', '2022-07-15 08:22:18', '2022-07-15 08:22:18');
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -65,7 +72,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -73,15 +80,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2022_02_06_061016_create_siswa_table', 2),
-(6, '2022_02_06_062020_create-galerysiswa_table', 3),
-(7, '2022_02_06_063216_create_tpresensi_table', 4),
-(8, '2022_02_06_063656_add_roles_field_to_users_table', 4);
+(5, '2022_05_31_225645_create_presensi_table', 1),
+(6, '2022_06_20_041634_tabel_golongan', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -93,7 +98,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -111,105 +116,102 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `siswa`
+-- Table structure for table `presensi`
 --
 
-CREATE TABLE `siswa` (
+CREATE TABLE `presensi` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_siswa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nta` int(11) NOT NULL,
-  `kelas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tempat_lahir` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tanggal_lahir` date NOT NULL,
-  `jenis_kelamin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `agama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alamat` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tlp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `golongan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jabatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pangkalan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `tanggal_absen` date NOT NULL,
+  `j_masuk` time NOT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ket` enum('hadir','sakit','ijin','alpha') COLLATE utf8mb4_unicode_ci NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Struktur dari tabel `tpresensi`
+-- Dumping data for table `presensi`
 --
 
-CREATE TABLE `tpresensi` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `siswa_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `tanggal` date NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `catatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nilai` int(11) NOT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `presensi` (`id`, `id_user`, `tanggal_absen`, `j_masuk`, `foto`, `ket`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(7, 1, '2022-07-17', '11:28:46', '1658032126.jpeg', 'sakit', NULL, '2022-07-17 04:28:46', '2022-07-17 04:28:46'),
+(8, 1, '2022-07-17', '13:14:21', '1658038461.jpg', 'hadir', NULL, '2022-07-17 06:14:21', '2022-07-17 06:14:21'),
+(9, 6, '2022-07-17', '13:17:18', '1658038638.png', 'hadir', NULL, '2022-07-17 06:17:18', '2022-07-17 06:17:18');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kelas` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nta` int(11) DEFAULT NULL,
+  `tempat_lahir` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tanggal_lahir` date DEFAULT NULL,
+  `jenis_kelamin` enum('Laki-laki','Perempuan') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `agama` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_tlp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `roles` enum('ADMIN','USER','PEMBINA') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_regu` int(11) DEFAULT NULL,
+  `jabatan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `golongan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `roles` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'USER'
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `roles`) VALUES
-(2, 'Adiba Salwa Salsabil', 'assalsabil@gmail.com', NULL, '$2y$10$OBctipx2riO1h//PMS6aC.U.B0VvAO9nEr6jPIKPAhlJ06EOilMA.', NULL, '2022-02-06 01:29:50', '2022-02-06 01:29:50', 'ADMIN'),
-(3, 'Qiswatul ulfah', 'qiswatululfah@gmail.com', NULL, '$2y$10$ID1c4JM2odu9XKPJDaRpUOAa.LPA4V5krhbNyx7LCy5yq3kutbslS', NULL, '2022-02-06 03:36:21', '2022-02-06 03:36:21', 'USER');
+INSERT INTO `users` (`id`, `nama`, `email`, `username`, `email_verified_at`, `password`, `kelas`, `nta`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `agama`, `alamat`, `no_tlp`, `roles`, `id_regu`, `jabatan`, `golongan`, `foto`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'admin@gmail.com', 'admin', NULL, '$2y$10$OBctipx2riO1h//PMS6aC.U.B0VvAO9nEr6jPIKPAhlJ06EOilMA.', 'VII - A', 1, 'Se', '2002-02-08', 'Laki-laki', 'Se', 'D', '123', 'ADMIN', 1, 'Se', 'Se', NULL, NULL, NULL, NULL),
+(2, 'Gabriel Alvito', 'gbrlalv@gmail.com', 'gabrielalvito', NULL, '$2y$10$4SMyaVWAD/nz2As1VbgnSurK961ippbKlrIH5A/RKQ3YF8w.9FUoa', NULL, 2, 'semarang', '1212-12-12', 'Laki-laki', 'Islam', 'asda', '12', 'PEMBINA', NULL, 'Kamabigus', 'Penggalang Ramu', '1658032584.jpg', NULL, '2022-07-15 08:29:06', '2022-07-17 04:36:24'),
+(3, 'Muhammad Naufal Syarif', 'naufal@gmail.com', 'naufal', NULL, '$2y$10$LEqkKwLj7CXyPvKv92oFU.iOhXH4kH8lHe23KmIHouRuyUFLAvFSW', 'VII - A', 3, 'semarang', '1313-12-13', 'Laki-laki', 'Islam', 'asdas', '081', 'USER', 1, 'Pelatih Lapangan', NULL, '1658032608.jpg', NULL, '2022-07-15 08:30:11', '2022-07-17 04:36:48'),
+(6, 'test', 'test@gmail.com', 'testt', NULL, '$2y$10$QXqA0rojQpVxrtnO7ENmeurhwKSvblHe0kej36Bb.HlBj0i19gvjO', 'VIII - D', 12, 'semarang', '1212-12-12', 'Laki-laki', 'Budha', 'asdas', '12', 'USER', 1, 'Pelatih Lapangan', NULL, '1658038607.jpg', NULL, '2022-07-17 06:16:47', '2022-07-17 06:16:47');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indeks untuk tabel `galerysiswa`
+-- Indexes for table `golongan`
 --
-ALTER TABLE `galerysiswa`
+ALTER TABLE `golongan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indeks untuk tabel `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -217,69 +219,57 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `siswa`
+-- Indexes for table `presensi`
 --
-ALTER TABLE `siswa`
+ALTER TABLE `presensi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tpresensi`
---
-ALTER TABLE `tpresensi`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `galerysiswa`
+-- AUTO_INCREMENT for table `golongan`
 --
-ALTER TABLE `galerysiswa`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `golongan`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `siswa`
+-- AUTO_INCREMENT for table `presensi`
 --
-ALTER TABLE `siswa`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `presensi`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `tpresensi`
---
-ALTER TABLE `tpresensi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -22,23 +22,38 @@ class DashboardController extends Controller
 
         $absen = Presensi::all();
 
-        $dataPoints = [];
+        // $dataPoints = [];
 
-        foreach ($absen as $data) {
+        // foreach ($absen as $data) {
             
-            $dataPoints[] = array(
-                "name" => $data['name'],
-                "data" => [
-                    intval($data['term1_marks']),
-                    intval($data['term2_marks']),
-                    intval($data['term3_marks']),
-                    intval($data['term4_marks']),
-                ],
-            );
-        }
+        //     $dataPoints[] = array(
+        //         "name" => $data['name'],
+        //         "data" => [
+        //             intval($data['term1_marks']),
+        //             intval($data['term2_marks']),
+        //             intval($data['term3_marks']),
+        //             intval($data['term4_marks']),
+        //         ],
+        //     );
+        // }
         // return view('home', compact('total_user','pembina','siswa', 'presensi'));
         return view('pages.admin.dashboard', compact('total_user','pembina','siswa', 'presensi'));
     }
+
+    // public function barchart(Request $request)
+    // {
+    // 	$hadir = Presensi::where('ket','hadir')->get();
+    // 	$sakit = Presensi::where('ket','vegitable')->get();
+    // 	$ijin = Presensi::where('ket','ijin')->get();
+    //     $alpha = Presensi::where('ket','alpha')->get();
+        
+    // 	$total_hadir = count($hadir);    	
+    // 	$total_sakit = count($sakit);
+    // 	$total_ijin = count($ijin);
+    //     $total_alpha = count($alpha);
+    	
+    // 	return view('barchart',compact('total_hadir','total_sakit','total_ijin','total_alpha'));
+    // }
 
     /**
      * Show the form for creating a new resource.

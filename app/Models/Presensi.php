@@ -12,18 +12,17 @@ class Presensi extends Model
     protected $table = "presensi";
 
     protected $fillable = [
-        'id_siswa',
-        'id_pembina',
+        'id_user',
         'tanggal_absen',
         'j_masuk',
-        'st_masuk',
         'foto',
         'ket',
-        'hadir',
-        'sakit',
-        'ijin',
-        'alpha',
     ];
 
     protected $hidden = [];
+
+    public function presensis()
+    {
+        return $this->belongsToMany(Presensi::class);
+    }
 }

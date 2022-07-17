@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Presensi;
 
 class DashboarduserController extends Controller
 {
@@ -14,7 +16,14 @@ class DashboarduserController extends Controller
      */
     public function index()
     {
-        return view('pages.user.dashboard');
+        $total_user = User::count();
+        $pembina = User::where('roles','PEMBINA')->count();
+        $siswa = User::where('roles','USER')->count();
+        $presensi = Presensi::count();
+
+        $absen = Presensi::all();
+        return view('pages.user.dashboard', compact('total_user','pembina','siswa', 'presensi'));
+        // return view('pages.user.dashboard');
     }
 
     /**

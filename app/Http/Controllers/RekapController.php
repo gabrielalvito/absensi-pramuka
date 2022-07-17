@@ -6,6 +6,7 @@ use App\Models\Rekap;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RekapController extends Controller
 {
@@ -16,8 +17,11 @@ class RekapController extends Controller
      */
     public function index()
     {
-        $items = Rekap::all();
-        $items = User::all();
+       
+        $items = DB::table('presensi')
+                    ->join('users','users.id', '=', 'presensi.id_user')
+                    ->select('presensi.*','users.nama','users.kelas','users.nta','users.foto')
+                    ->get();
 
         return view('pages.admin.rekap.index', [
             'rekap' => $items
@@ -66,7 +70,7 @@ class RekapController extends Controller
 
         return view('pages.admin.rekap.show', [
             'rekap' => $items
-        ]);
+        ]); 
     }
 
     /**
@@ -77,7 +81,11 @@ class RekapController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Rekap::findOrFail($id);
+
+        return view('pages.admin.rekap.edit', [
+            'rekap' => $item
+        ]);
     }
 
     /**
@@ -100,6 +108,9 @@ class RekapController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Rekap::findOrFail($id);
+        $item->delete();
+
+        return redirect('rekap')->with('success', 'Data Rekap Berhasil Dihapus!');
     }
 }

@@ -12,18 +12,11 @@ class Rekap extends Model
     protected $table = "presensi";
 
     protected $fillable = [
-        'id_siswa',
         'id_user',
-        'id_pembina',
         'tanggal_absen',
         'j_masuk',
-        'st_masuk',
         'foto',
         'ket',
-        'hadir',
-        'sakit',
-        'ijin',
-        'alpha',
     ];
 
     protected $hidden = [];

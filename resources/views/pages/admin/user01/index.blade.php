@@ -96,9 +96,7 @@
                             <th>Nama</th>
                             <th>Username</th>
                             <th>Email</th>
-                            {{-- <th>Password</th> --}}
                             <th>Roles</th>
-                            {{-- <th>Username</th> --}}
                             <th>Action</th> 
                         </tr>
                     <tbody>
@@ -108,9 +106,7 @@
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->email }}</td>
-                            {{-- <td>{{ $item->password }}</td> --}}
                             <td>{{ $item->roles }}</td>
-                            {{-- <td>{{ $item->username }}</td> --}}
                             <td>
                                 <a class="btn btn-info" href="{{url('user01/'.$item->id.'/show')}}"><i class="fa fa-eye"></i></a>
                                 <a class="btn btn-success" href="{{url('user01/'.$item->id.'/edit')}}"><i class="fas fa-pencil-alt"></i></a>

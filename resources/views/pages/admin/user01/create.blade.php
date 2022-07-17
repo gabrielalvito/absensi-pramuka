@@ -10,7 +10,7 @@
 
  <div class="alert alert-warning" role="alert">
  <i class="fas fa-fw fa-home"></i>
- <a  href="{{url('pembina')}}" style="text-decoration:none"> Tambah Admin </a>
+ <a  href="{{url('user01')}}" style="text-decoration:none"> Tambah Admin </a>
 </div>
 
 @if ($errors->any())
@@ -25,7 +25,7 @@
 
 <div class="card shadow">
   <div class="card-body">
-    <form action="/pembina/store" method="post">
+    <form action="/user01/store" method="post">
     {{-- {{ crsf_field() }} --}}
       @csrf
       <div class="form-group">

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\Siswa\SiswaDatadiriController;
+use App\Http\Controllers\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +30,7 @@ Route::prefix('admin')
 Auth::routes();
 
 Route::get('/home', "DashboarduserController@index")->name('home');
-
+Route::get('/editprofile', "User01Controller@edit")->name('editprofile');
 
 //User = User
 Route::get('/user', "DashboarduserController@index")->middleware('user');
@@ -57,7 +59,7 @@ Route::patch('/pembina/{id}/update', "PembinaController@update");
 Route::delete('/pembina/{id}', "PembinaController@destroy");
 
 
-
+// Admin = Data Regu
 Route::get('/regu', "ReguController@index");
 Route::get('/regu/create', "ReguController@create");
 Route::post('/regu/store', "ReguController@store");
@@ -66,12 +68,19 @@ Route::get('/regu/{id}/edit', "ReguController@edit");
 Route::patch('/regu/{id}/update', "ReguController@update");
 Route::delete('/regu/{id}', "ReguController@destroy");
 
-//User = Data Pembina
-// Route::get('/pembina', "PembinaController@indexuser");
 
 //Admin = Data Admin
 Route::get('/user01', "User01Controller@index");
+Route::get('/user01/{id}/show', "User01Controller@show");
 Route::get('/user01/create', "User01Controller@create");
+Route::post('/user01/store', "User01Controller@store");
+Route::get('/user01/{id}/edit', "User01Controller@edit");
+Route::patch('/user01/{id}/update', "User01Controller@update");
+Route::delete('/user01/{id}', "User01Controller@destroy");
+
+//User = Data Pembina
+// Route::get('/pembina', "PembinaController@indexuser");
+
 // Route::get('/pembina/create', "PembinaController@create");
 // Route::post('/pembina/store', "PembinaController@store");
 // Route::get('/pembina/{id}/show', "PembinaController@show");
@@ -95,6 +104,11 @@ Route::post('/simpanpresensi', "PresensiController@store")->name('SPresensi');
 
 //Admin = Data Rekap
 Route::get('/rekap', "RekapController@index");
+Route::get('/rekap/{id}/show', "RekapController@show");
+Route::get('/rekap/{id}/edit', "RekapController@edit");
+Route::patch('/rekap/{id}/update', "RekapController@update");
+Route::delete('/rekap/{id}', "RekapController@destroy");
+
 // Route::get('/pembina/create', "PembinaController@create");
 // Route::post('/pembina/store', "PembinaController@store");
 // Route::get('/pembina/{id}/show', "PembinaController@show");

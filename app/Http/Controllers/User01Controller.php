@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 
 class User01Controller extends Controller
@@ -44,7 +45,26 @@ class User01Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            // 'roles' => 'required',
+            
+        ]);
+
+        User::create([
+            'nama' => $request->nama,
+            'username' => $request->username,
+            'email' => $request->email,
+            'nta' => $request->nta,
+            'password' => Hash::make($request['password']),
+            'roles' => 'ADMIN',
+        ]);
+        
+        // dd($request);
+        return redirect('user01')->with('success', 'Data Admin Berhasi Ditambahkan!');
     }
 
     /**
@@ -55,7 +75,11 @@ class User01Controller extends Controller
      */
     public function show($id)
     {
-        //
+        $item = User::findOrFail($id);
+
+        return view('pages.admin.user01.show', [
+            'user01' => $item
+        ]);
     }
 
     /**
@@ -66,7 +90,11 @@ class User01Controller extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = User::findOrFail($id);
+        
+        return view('pages.admin.user01.edit', [
+            'user01' => $item
+        ]);
     }
 
     /**
@@ -78,7 +106,26 @@ class User01Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'roles' => 'required',
+            
+        ]);
+
+        User::create([
+            'nama' => $request->nama,
+            'username' => $request->username,
+            'email' => $request->email,
+            'nta' => $request->nta,
+            'password' => Hash::make($request['password']),
+            'roles' => 'ADMIN',
+        ]);
+        
+        // dd($request);
+        return redirect('user01')->with('success', 'Data Admin Berhasi Ditambahkan!');
     }
 
     /**
@@ -89,6 +136,9 @@ class User01Controller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = User::findOrFail($id);
+        $item->delete();
+
+        return redirect('user01')->with('success', 'Data Admin Berhasil Dihapus!');
     }
 }
