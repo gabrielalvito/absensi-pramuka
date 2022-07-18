@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\SiswaExport;
 use App\Imports\SiswaImport;
 use App\Models\User;
+use App\Models\Golongan;
 use Illuminate\Support\Str;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Response;
@@ -52,8 +53,8 @@ class SiswaDatadiriController extends Controller
      */
     public function create()
     {
-
-        return view('pages.admin.siswa.datadiri.create');
+        $list_golongan = Golongan ::pluck('nama_golongan','id_golongan');
+        return view('pages.admin.siswa.datadiri.create', compact('list_golongan'));
     }
 
     /**
@@ -102,6 +103,7 @@ class SiswaDatadiriController extends Controller
             'no_tlp' => $request->no_tlp,
             'id_regu' => $request->id_regu,
             'jabatan' => $request->jabatan,
+            'id_golongan' => $request->golongan,
             'foto' => $nama_file,
         ]);
         return redirect('siswa')->with('success', 'Data Siswa Berhasil Ditambahkan!');
@@ -155,8 +157,10 @@ class SiswaDatadiriController extends Controller
     public function edit($id)
     {
         $item = SiswaDatadiri::findOrFail($id);
+        $list_golongan = Golongan::pluck('nama_golongan','id_golongan');
 
-        return view('pages.admin.siswa.datadiri.edit', [
+        return view('pages.admin.siswa.datadiri.edit', compact('list_golongan','item'),
+        [
             'siswa' => $item
         ]);
     }
@@ -203,6 +207,7 @@ class SiswaDatadiriController extends Controller
             'agama' => $request->agama,
             'alamat' => $request->alamat,
             'no_tlp' => $request->no_tlp,
+            'id_golongan' => $request->id_golongan,
             'jabatan' => $request->jabatan,
             'foto' => $nama_file,
         ]);

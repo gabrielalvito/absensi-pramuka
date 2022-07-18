@@ -100,8 +100,13 @@
         <label for="golongan">Golongan</label>
         <select class="custom-select my-1 mr-sm-2" id="golongan" name="golongan">
             <option selected>Pilih...</option>
-            <option value="Penggalang Ramu">Pembina</option>
-            <option value="Penggalang Rakit">Pembantu Pembina</option>
+            @foreach ($list_golongan as $key => $value)
+            <option value="{{ $key }}">
+                {{ $value }}
+            </option>
+            @endforeach
+            <!-- <option value="Penggalang Ramu">Pembina</option>
+            <option value="Penggalang Rakit">Pembantu Pembina</option> -->
         </select>
       </div>
 
@@ -110,12 +115,12 @@
           <select class="custom-select my-1 mr-sm-2" id="jabatan" name="jabatan">
             <option selected>Pilih...</option>
             <option value="Kamabigus">Kamabigus</option>
-            <option value="Pembina Utama">Pembina Utama</option>
-            <option value="Pembina Lapangan">Pembina Lapangan</option>
+            <option value="Ka gudep putra">Ka gudep putra</option>
+            <option value="Ka gudep putri">Ka gudep putri</option>
+            <option value="Pratama">Pratama</option>
+            <option value="Pimpinan regu">Pimpinan regu</option>
             <option value="Sekretaris">Sekretaris</option>
             <option value="Bendahara">Bendahara</option>
-            <option value="Operator">Operator</option>
-            <option value="Tenaga IT">Tenaga IT</option>
             <option value="Lainnya">Lainnya</option>
           </select>
       </div>

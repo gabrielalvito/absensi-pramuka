@@ -27,9 +27,19 @@ class SiswaDatadiri extends Model
         'no_tlp',
         'roles',    
         'id_regu',
+        'id_golongan',
         'jabatan',
         'foto'
     ];
 
     protected $hidden = [];
+
+    public function users()
+    {
+        return $this->belongsToMany(SiswaDatadiri::class);
+    }
+
+    public function golongan(){
+        return $this -> belongsTo('App\Models\Golongan', 'id_golongan');
+    }
 }

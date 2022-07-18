@@ -21,10 +21,19 @@ class Pembina extends Model
         'agama',
         'alamat',
         'no_tlp',
-        'golongan',
+        'id_golongan',
         'jabatan',
         'foto',
     ];
 
     protected $hidden = [];
+
+    public function users()
+    {
+        return $this->belongsToMany(Pembina::class);
+    }
+
+    public function golongan(){
+        return $this -> belongsTo('App\Models\Golongan', 'id_golongan');
+    }
 }

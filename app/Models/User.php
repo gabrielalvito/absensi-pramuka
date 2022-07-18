@@ -31,7 +31,7 @@ class User extends Authenticatable
         'no_tlp',
         'roles',
         'jabatan',
-        'golongan',
+        'id_golongan',
         'id_regu',
         'foto',
     ];
@@ -58,5 +58,9 @@ class User extends Authenticatable
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function golongan(){
+        return $this -> belongsTo('App\Models\Golongan', 'id_golongan');
     }
 }

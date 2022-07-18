@@ -103,7 +103,7 @@
                         @foreach ($items as $item)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $item->golongan }}</td>                           
+                            <td>{{ $item->id_golongan }}</td>                           
                             <td>{{ $item->no_kapling }}</td>
                             <td>{{ $item->nama_regu }}</td>
                             @if($user == 'ADMIN')

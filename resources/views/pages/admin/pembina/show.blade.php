@@ -83,7 +83,7 @@
               </tr>
               <tr>
                 <td>Golongan</td>
-                <td>{{$pembina->golongan}}</td>
+                <td>{{$pembina->id_golongan}}</td>
               </tr>
               <tr>
                 <td>Jabatan</td>

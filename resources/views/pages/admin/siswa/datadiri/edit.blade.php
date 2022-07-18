@@ -127,18 +127,17 @@
         <input type="text" class="form-control" name="no_tlp" value="{{$siswa->no_tlp}}"> 
       </div>
 
-      <!-- <div class="form-group">
-        <label for="golongan">Golongan</label>
-        <select class="custom-select my-1 mr-sm-2" id="golongan" name="golongan">
-                          @if (old('golongan') == $siswa->golongan)
-                              <option value="{{ $siswa->golongan }}" selected>{{ $siswa->golongan }}</option>
-                            @else
-                              <option value="Penggalang Ramu">Penggalang Ramu</option>
-                              <option value="Penggalang Rakit">Penggalang Rakit</option>
-                              <option value="Penggalang Terap">Penggalang Terap</option>
-                          @endif
-                      </select>
-      </div> -->
+      <div class="form-group">
+          <label for="golongan">Golongan</label>
+          <select class="custom-select my-1 mr-sm-2" name="id_golongan">
+            <option value="">Pilih Golongan</option>
+            @foreach ($list_golongan as $key => $value)
+            <option value="{{ $key }}" {{$item->id_golongan == $key ? 'selected' : ''}}>
+              {{ $value }}
+            </option>
+              @endforeach
+          </select>
+        </div>
 
       <div class="form-group">
         <label for="jabatan">Jabatan</label>

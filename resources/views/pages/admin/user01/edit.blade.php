@@ -43,14 +43,19 @@
       </div>
 
       <div class="form-group">
-        <label for="tempat_lahir">Tempat Lahir</label>
-        <input type="text" class="form-control" name="tempat_lahir" value="{{$user01->tempat_lahir}}"> 
+        <label for="email">Email</label>
+        <input type="text" class="form-control" name="email" value="{{$user01->email}}"> 
       </div>
 
+      <!-- <div class="form-group">
+        <label for="tempat_lahir">Tempat Lahir</label>
+        <input type="text" class="form-control" name="tempat_lahir" value="{{$user01->tempat_lahir}}"> 
+      </div> -->
+<!-- 
       <div class="form-group">
         <label for="tanggal_lahir">Tanggal Lahir</label>
         <input type="date" class="form-control" name="tanggal_lahir" value="{{$user01->tanggal_lahir}}"> 
-      </div>
+      </div> -->
       
       <div class="form-group">
         <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -60,7 +65,7 @@
                           <option value="Laninya">Laninya</option>
                       </select>
       </div>
-
+<!-- 
       <div class="form-group">
         <label for="agama">Agama</label>
         <select class="custom-select my-1 mr-sm-2" id="agama" name="agama" value="{{$user01->agama}}">
@@ -72,9 +77,9 @@
                           <option value="Protestan">Protestan</option>
                           <option value="Protestan">Lainnya</option>
                       </select>
-      </div>
+      </div> -->
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="alamat">Alamat</label>
         <textarea class="form-control" id="message-text" name="alamat">{{$user01->alamat}}</textarea>
       </div>
@@ -95,9 +100,9 @@
                             
                           @endif
                       </select>
-      </div>
+      </div> -->
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="jabatan">Jabatan</label>
         <select class="custom-select my-1 mr-sm-2" id="jabatan" name="jabatan">
                               <option value="Kamabigus" {{ ($user01->jabatan == 'Kamabigus') ? 'selected' : ''}}>Kamabigus</option>
@@ -109,17 +114,17 @@
                               <option value="Tenaga IT">Tenaga IT</option>
                               <option value="Lainnya">Lainnya</option>
                       </select>
-      </div>
+      </div> -->
 
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="foto">Foto</label>
       <div class="custom-file">      
         <input type="file" name="foto" class="custom-file-input" id="validatedCustomFile" required>
         <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
         <div class="invalid-feedback">Example invalid custom file feedback</div>
       </div>
-      </div>
+      </div> -->
 
       <button type="submit" class="btn btn-primary ">Ubah</button>
       <button type="reset" class="btn btn-danger ">Batal</button>

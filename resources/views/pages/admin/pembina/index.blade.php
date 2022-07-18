@@ -126,7 +126,7 @@
                                 <td><a href="{{ asset('frontend/images/IMG_6959.jpeg') }}" target="_blank">
                                         <img height="70px" width="50px" src="{{ asset('foto_pembina/' .$item -> foto) }}" alt=""></a></td>
                                 <td>{{ $item->nta }}</td>
-                                <td>{{ $item->golongan }}</td>
+                                <td>{{ $item->golongan['nama_golongan'] }}</td>
                                 <td>{{ $item->jabatan }}</td>
                                 @if($user == 'ADMIN')
                                 <td>

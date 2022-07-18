@@ -41,7 +41,7 @@
                                 <td>{{ $item->tanggal_absen }}</td>
                                 <td>{{ $item->j_masuk }}</td>
                                 <td>{{ $item->ket }}</td>
-                                <td><a target="_blank"><img height="70px" width="50px" src="{{ asset('foto_presensi/' .$item -> foto) }}" alt=""></a></td>
+                                <td><a target="_blank"><img height="70px" width="50px" src="{{ asset('foto_presensi/'.$item->foto) }}" alt=""></a></td>
                                 <td>
                                     <a class="btn btn-info" href="{{url('rekap/'.$item->id.'/show')}}"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-success" href="{{url('rekap/'.$item->id.'/edit')}}"><i class="fas fa-pencil-alt"></i></a>

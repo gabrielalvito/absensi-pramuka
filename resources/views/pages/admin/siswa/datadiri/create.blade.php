@@ -128,6 +128,20 @@
       </div>
 
       <div class="form-group">
+        <label for="golongan">Golongan</label>
+        <select class="custom-select my-1 mr-sm-2" id="golongan" name="golongan">
+            <option selected>Pilih...</option>
+            @foreach ($list_golongan as $key => $value)
+            <option value="{{ $key }}">
+                {{ $value }}
+            </option>
+            @endforeach
+            <!-- <option value="Penggalang Ramu">Pembina</option>
+            <option value="Penggalang Rakit">Pembantu Pembina</option> -->
+        </select>
+      </div>
+      
+      <div class="form-group">
         <label for="id_regu">Id Regu</label>
         <input type="text" class="form-control" name="id_regu" placeholder="Id Regu" value="{{old('id_regu')}}"> 
       </div>

@@ -132,7 +132,7 @@
                                 <td>{{ $item->agama }}</td>
                                 <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->no_tlp }}</td> -->
-                                <td>{{ $item->golongan }}</td>
+                                <td>{{ $item->golongan['nama_golongan'] }}</td>
                                 <!-- <td>{{ $item->id_regu }}</td> -->
                                 <td>{{ $item->jabatan }}</td>
 

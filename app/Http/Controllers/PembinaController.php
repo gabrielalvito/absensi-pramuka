@@ -9,6 +9,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PembinaExport;
 use App\Imports\PembinaImport;
+use App\Models\Golongan;
 use App\Models\User as ModelsUser;
 use Illuminate\Support\Str;
 use Illuminate\Contracts\Session\Session;
@@ -52,7 +53,9 @@ class PembinaController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.pembina.create');
+        $list_golongan = Golongan ::pluck('nama_golongan','id_golongan');
+
+        return view('pages.admin.pembina.create', compact('list_golongan'));
     }
 
     /**
@@ -73,7 +76,7 @@ class PembinaController extends Controller
             'agama' => 'required',
             'alamat' => 'required',
             'no_tlp' => 'required',
-            'golongan' => 'required',
+            // 'id_golongan' => 'required',
             'jabatan' => 'required',
             'foto' => 'required|image|mimes:jpeg,jpg,png',
             
@@ -98,7 +101,7 @@ class PembinaController extends Controller
             'no_tlp' => $request->no_tlp,
             'roles' => 'PEMBINA',
             'jabatan' => $request->jabatan,
-            'golongan' => $request->golongan,
+            'id_golongan' => $request->golongan,
             'foto' => $nama_file,
         ]);
         
@@ -146,8 +149,10 @@ class PembinaController extends Controller
     public function edit($id)
     {
         $item = Pembina::findOrFail($id);
+        $list_golongan = Golongan::pluck('nama_golongan','id_golongan');
 
-        return view('pages.admin.pembina.edit', [
+        return view('pages.admin.pembina.edit', compact('list_golongan','item')
+        , [
             'pembina' => $item
         ]);
     }
@@ -172,7 +177,7 @@ class PembinaController extends Controller
             'agama' => 'required',
             'alamat' => 'required',
             'no_tlp' => 'required',
-            'golongan' => 'required',
+            // 'id_golongan' => 'required',
             'jabatan' => 'required',
             'foto' => 'required|image|mimes:jpeg,jpg,png',
         ]);
@@ -191,7 +196,7 @@ class PembinaController extends Controller
             'agama' => $request->agama,
             'alamat' => $request->alamat,
             'no_tlp' => $request->no_tlp,
-            'golongan' => $request->golongan,
+            'id_golongan' => $request->id_golongan,
             'jabatan' => $request->jabatan,
             'foto' => $nama_file,
         ]);

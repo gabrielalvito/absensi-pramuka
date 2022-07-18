@@ -20,7 +20,7 @@ class RekapController extends Controller
        
         $items = DB::table('presensi')
                     ->join('users','users.id', '=', 'presensi.id_user')
-                    ->select('presensi.*','users.nama','users.kelas','users.nta','users.foto')
+                    ->select('presensi.*','users.nama','users.kelas','users.nta')
                     ->get();
 
         return view('pages.admin.rekap.index', [

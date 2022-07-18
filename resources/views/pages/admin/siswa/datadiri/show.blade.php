@@ -94,6 +94,10 @@
                 <td>{{$siswa->no_tlp}}</td>
               </tr>
               <tr>
+                <td>Golongan</td>
+                <td>{{$siswa->id_golongan}}</td>
+              </tr>
+              <tr>
                 <td>Id Regu</td>
                 <td>{{$siswa->id_regu}}</td>
               </tr>

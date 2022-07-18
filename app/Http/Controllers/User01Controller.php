@@ -106,22 +106,26 @@ class User01Controller extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request, $id);
         $this->validate($request, [
+            'nta' => 'required',
             'nama' => 'required',
             'username' => 'required',
             'email' => 'required',
-            'password' => 'required',
-            'roles' => 'required',
-            
+            'jenis_kelamin' => 'required',
+            // 'password' => 'required',
+            // 'roles' => 'required',
         ]);
 
-        User::create([
+        User::where('id', $id)->update([
+            'nta' => $request->nta,
             'nama' => $request->nama,
             'username' => $request->username,
             'email' => $request->email,
             'nta' => $request->nta,
-            'password' => Hash::make($request['password']),
-            'roles' => 'ADMIN',
+            'jenis_kelamin' => $request->jenis_kelamin,
+            // 'password' => Hash::make($request['password']),
+            // 'roles' => 'ADMIN',
         ]);
         
         // dd($request);
